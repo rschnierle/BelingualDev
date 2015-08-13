@@ -185,6 +185,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -208,10 +209,22 @@
     <Compile Include="Migrations\201508131740471_DefineTeacherProperties.Designer.cs">
       <DependentUpon>201508131740471_DefineTeacherProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508132232479_DefineEnrollmentStructure.cs" />
+    <Compile Include="Migrations\201508132232479_DefineEnrollmentStructure.Designer.cs">
+      <DependentUpon>201508132232479_DefineEnrollmentStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508132236307_DefineEnrollmentStructure1.cs" />
+    <Compile Include="Migrations\201508132236307_DefineEnrollmentStructure1.Designer.cs">
+      <DependentUpon>201508132236307_DefineEnrollmentStructure1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\ClassRoom.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Student.cs" />
@@ -221,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-cerulean.css" />
+    <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -260,6 +274,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -328,6 +343,11 @@
     <Content Include="Views\Teachers\Details.cshtml" />
     <Content Include="Views\Teachers\Edit.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,6 +371,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508131740471_DefineTeacherProperties.resx">
       <DependentUpon>201508131740471_DefineTeacherProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508132232479_DefineEnrollmentStructure.resx">
+      <DependentUpon>201508132232479_DefineEnrollmentStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508132236307_DefineEnrollmentStructure1.resx">
+      <DependentUpon>201508132236307_DefineEnrollmentStructure1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -22,6 +22,11 @@ namespace BelingualAcademy.Models
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<ClassRoom> ClassRooms { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Class> Clases { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -32,7 +37,5 @@ namespace BelingualAcademy.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<BelingualAcademy.Models.Teacher> Teachers { get; set; }
     }
 }

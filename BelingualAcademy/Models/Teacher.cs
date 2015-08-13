@@ -36,5 +36,7 @@ namespace BelingualAcademy.Models
         public string BirthPlace { get; set; }
 
         public string Comments { get; set; }
+
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

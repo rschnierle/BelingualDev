@@ -5,12 +5,12 @@ using System.Web;
 
 namespace BelingualAcademy.Models
 {
-    public class Course
+    public class ClassRoom
     {
-        public int ID { get; set; }
+        public int ClassRoomID { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Class> Clases { get; set; }
     }
 }

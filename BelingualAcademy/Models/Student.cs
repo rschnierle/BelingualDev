@@ -41,5 +41,7 @@ namespace BelingualAcademy.Models
 
         public string Comments { get; set; }
 
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
+
     }
 }
