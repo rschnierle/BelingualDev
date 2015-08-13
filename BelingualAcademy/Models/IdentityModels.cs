@@ -32,5 +32,7 @@ namespace BelingualAcademy.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BelingualAcademy.Models.Teacher> Teachers { get; set; }
     }
 }

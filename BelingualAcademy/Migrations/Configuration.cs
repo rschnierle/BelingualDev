@@ -9,7 +9,7 @@ namespace BelingualAcademy.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "BelingualAcademy.Models.ApplicationDbContext";
         }
 

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BelingualAcademy.Models
 {
-    public class Student
+    public class Teacher
     {
         public int ID { get; set; }
 
@@ -14,10 +14,6 @@ namespace BelingualAcademy.Models
         public string MiddleName { get; set; }
 
         public string LastName { get; set; }
-
-        public string FatherName { get; set; }
-
-        public string MotherName { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
 
@@ -40,6 +36,5 @@ namespace BelingualAcademy.Models
         public string BirthPlace { get; set; }
 
         public string Comments { get; set; }
-
     }
 }
