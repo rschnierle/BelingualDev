@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Course.Name)
@@ -29,29 +29,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Teacher.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Period)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GroupID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GroupID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GroupID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GroupID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.GroupID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
+            </td>
+        </tr>
+    }
 
 </table>

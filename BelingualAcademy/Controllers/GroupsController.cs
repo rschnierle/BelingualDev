@@ -15,10 +15,18 @@ namespace BelingualAcademy.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
-        public ActionResult Index()
+        public ActionResult Index(Course course)
         {
-            var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
-            return View(groups.ToList());
+            if (course == null)
+            {
+                var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
+                return View(groups.ToList());
+            }
+            else
+            {
+                var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
+                return PartialView(groups.Where(g => g.CourseID == course.ID).ToList());
+            }
         }
 
         // GET: Groups/Details/5
