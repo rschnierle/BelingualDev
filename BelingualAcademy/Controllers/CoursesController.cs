@@ -115,6 +115,14 @@ namespace BelingualAcademy.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Courses
+        public ActionResult ViewGroups(int course)
+        {
+                var groups = db.Groups.Where(g => g.CourseID==course).ToList();
+                return PartialView("_Groups", groups);
+           
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201508132236307_DefineEnrollmentStructure1.Designer.cs">
       <DependentUpon>201508132236307_DefineEnrollmentStructure1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508142058477_StudentAnnotations.cs" />
+    <Compile Include="Migrations\201508142058477_StudentAnnotations.Designer.cs">
+      <DependentUpon>201508142058477_StudentAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Class.cs" />
@@ -348,6 +352,7 @@
     <Content Include="Views\Groups\Details.cshtml" />
     <Content Include="Views\Groups\Edit.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Courses\_Groups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -377,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508132236307_DefineEnrollmentStructure1.resx">
       <DependentUpon>201508132236307_DefineEnrollmentStructure1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508142058477_StudentAnnotations.resx">
+      <DependentUpon>201508142058477_StudentAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

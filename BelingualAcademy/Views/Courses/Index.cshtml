@@ -27,8 +27,17 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                <!-- Button trigger modal -->
+                @Html.ActionLink("Groups", "ViewGroups", item.ID , new { @class = "btn btn-primary btn-lg", data_toggle = "modal", data_target = "#myModal" })
+                <a href="@Url.Action("ViewGroups" , new { course=item.ID })" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Groups
+                </a>
             </td>
         </tr>
     }
 
 </table>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+</div><!-- /.modal -->

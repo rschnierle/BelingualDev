@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,9 @@ namespace BelingualAcademy.Models
     {
         public int ID { get; set; }
 
+        [Display(Name = "First Name")]
+        [Required]
+        [StringLength(255, MinimumLength = 3)]
         public string Name { get; set; }
 
         public string MiddleName { get; set; }
@@ -21,6 +25,7 @@ namespace BelingualAcademy.Models
 
         public DateTime? DateOfBirth { get; set; }
 
+        [Phone]
         public string Phone { get; set; }
 
         public string StreetAddress { get; set; }
