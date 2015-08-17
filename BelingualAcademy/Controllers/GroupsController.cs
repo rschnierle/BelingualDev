@@ -17,7 +17,7 @@ namespace BelingualAcademy.Controllers
         // GET: Groups
         public ActionResult Index(Course course)
         {
-            if (course == null)
+            if (course == null || course.ID == 0)
             {
                 var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
                 return View(groups.ToList());
