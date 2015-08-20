@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BelingualAcademy.Models.Group>
+﻿@model BelingualAcademy.Models.GroupSearchModel
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -6,55 +7,88 @@
 }
 
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-striped table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Teacher.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Period)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<h2>Groups</h2>
+@using (Html.BeginForm("Index", "Groups", FormMethod.Get))
+{
+    @Html.ValidationSummary(false)
+    <table style="border:0px; width:500px;">
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Course.Name)
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CourseID)
+                </div>
+
+                <div class="editor-field">
+                    @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CourseID, "", new { @class = "text-danger" })
+                </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Teacher.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Period)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.GroupID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.GroupID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
+            <td style="vertical-align:bottom;">
+                <input name="SearchButton" type="submit" value="Search" />
             </td>
         </tr>
-    }
+    </table>
 
-</table>
+    if (Model.SearchResults != null && Model.SearchResults.Count > 0)
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    Course
+                </th>
+                <th>
+                    Teacher
+                </th>
+                <th>
+                    Period
+                </th>
+                <th>
+                    Start Date
+                </th>
+                <th>
+                    End Date
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.SearchResults)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Teacher.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Period)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.GroupID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.GroupID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.PagedListPager(Model.SearchResults,
+          page => Url.Action("Index", new RouteValueDictionary()
+          {
+               { "Page", page },
+               { "CourseID", Model.CourseID }
+          }),
+          PagedListRenderOptions.PageNumbersOnly)
+    }
+}
+
+

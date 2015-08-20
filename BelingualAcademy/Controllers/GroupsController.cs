@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BelingualAcademy.Models;
+using PagedList;
 
 namespace BelingualAcademy.Controllers
 {
@@ -15,18 +16,31 @@ namespace BelingualAcademy.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
-        public ActionResult Index(Course course)
+        public ActionResult Index(GroupSearchModel model)
         {
-            if (course == null || course.ID == 0)
-            {
+            //if (model != null && model.CourseId !=null )
+            //{
                 var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
-                return View(groups.ToList());
-            }
-            else
+                var courses = db.Courses.ToList();
+                courses.Add(new Course { ID=0, Name="- All -" });
+                ViewBag.CourseID = new SelectList(courses, "ID", "Name", 0);
+            //    return View(groups.ToList());
+            //}
+            //else
+            //{
+            //    var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
+            //    return PartialView(groups.Where(g => g.CourseID == course.ID).ToList());
+            //}
+
+            if (!string.IsNullOrEmpty(model.SearchButton) || model.Page.HasValue)
             {
-                var groups = db.Groups.Include(g => g.Course).Include(g => g.Teacher);
-                return PartialView(groups.Where(g => g.CourseID == course.ID).ToList());
+                var results = groups
+                    .Where(g => g.CourseID == model.CourseID || model.CourseID == 0);
+
+                var pageIndex = model.Page ?? 1;
+                model.SearchResults = results.OrderBy(g => g.Course.Name).ToPagedList(pageIndex, 10);
             }
+            return View(model);
         }
 
         // GET: Groups/Details/5
